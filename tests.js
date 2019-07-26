@@ -1,4 +1,4 @@
-const {test } = require('@ianwalter/bff')
+const { test } = require('@ianwalter/bff')
 const createTimer = require('.')
 
 test('timer', ({ expect }) => {
