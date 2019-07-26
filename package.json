@@ -9,6 +9,27 @@
     "lint": "eslint .",
     "test": "bff"
   },
+  "files": [
+    "index.js"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ianwalter/timer.git"
+  },
+  "keywords": [
+    "timer",
+    "timing",
+    "duration",
+    "high",
+    "resolution",
+    "formatted",
+    "time",
+    "words"
+  ],
+  "bugs": {
+    "url": "https://github.com/ianwalter/timer/issues"
+  },
+  "homepage": "https://github.com/ianwalter/timer#readme",
   "devDependencies": {
     "@ianwalter/bff": "^6.4.0",
     "@ianwalter/eslint-config": "^2.1.1",
