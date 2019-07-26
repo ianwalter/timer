@@ -7,7 +7,7 @@
 ## Installation
 
 ```console
-yarn add @ianwalter/timer --dev
+yarn add @ianwalter/timer
 ```
 
 ## Usage
