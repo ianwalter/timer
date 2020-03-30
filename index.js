@@ -6,7 +6,9 @@ module.exports = () => ({
     return this.time[0] * 1000 + this.milliseconds
   },
   duration (precision) {
-    const milliseconds = this.milliseconds || (this.stop() && this.milliseconds)
+    if (this.milliseconds === undefined) {
+      this.stop(precision)
+    }
     const seconds = this.time[0]
     let minutes = seconds / 60
     const hours = seconds / 3600
@@ -23,6 +25,6 @@ module.exports = () => ({
       duration += `${seconds}s `
     }
 
-    return duration + `${milliseconds}ms`
+    return duration + `${this.milliseconds}ms`
   }
 })
