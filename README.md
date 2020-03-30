@@ -15,7 +15,7 @@ yarn add @ianwalter/timer
 ```js
 const createTimer = require('@ianwalter/timer')
 const timer = createTimer()
-const { time, duration } = timer.stopTimer()
+const { time, duration } = timer.stop()
 // time => [2, 506289527]
 // duration => 2s, 506.29ms
 ```
