@@ -1,8 +1,13 @@
 module.exports = () => ({
   startTime: process.hrtime(),
   stop (precision = 3) {
-    const [seconds, nanoseconds] = process.hrtime(this.startTime)
-    const milliseconds = parseFloat((nanoseconds / 1000000).toFixed(precision))
+    this.time = process.hrtime(this.startTime)
+    this.milliseconds = parseFloat((this.time[1] / 1000000).toFixed(precision))
+    return this.time[0] * 1000 + this.milliseconds
+  },
+  duration (precision) {
+    const milliseconds = this.milliseconds || (this.stop() && this.milliseconds)
+    const seconds = this.time[0]
     let minutes = seconds / 60
     const hours = seconds / 3600
 
@@ -18,9 +23,6 @@ module.exports = () => ({
       duration += `${seconds}s `
     }
 
-    return {
-      time: [seconds, nanoseconds],
-      duration: duration + `${milliseconds}ms`
-    }
+    return duration + `${milliseconds}ms`
   }
 })
