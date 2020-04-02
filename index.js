@@ -1,30 +1,29 @@
+const units = Object.entries({ h: 3600 * 1000, m: 60 * 1000, s: 1000 })
+
 module.exports = () => ({
   startTime: process.hrtime(),
-  stop (precision = 3) {
+  stop () {
     this.time = process.hrtime(this.startTime)
-    this.milliseconds = parseFloat((this.time[1] / 1000000).toFixed(precision))
-    return this.time[0] * 1000 + this.milliseconds
+    this.milliseconds = this.time[0] * 1000 + this.time[1] / 1000000
+    return this.milliseconds
   },
-  duration (precision) {
+  duration (precision = 3) {
     if (this.milliseconds === undefined) {
       this.stop(precision)
     }
-    const seconds = this.time[0]
-    let minutes = seconds / 60
-    const hours = seconds / 3600
 
+    let ms = this.milliseconds
     let duration = ''
-    if (hours >= 1) {
-      duration += `${hours}h `
-      minutes = (seconds % 3600) / 60
-    }
-    if (minutes >= 1) {
-      duration += `${minutes}m `
-    }
-    if (seconds >= 1) {
-      duration += `${seconds}s `
+    for (const [unit, n] of units) {
+      const count = Math.floor(ms / n)
+      if (count > 0) {
+        duration += count + unit + ' '
+        ms = ms % n
+      }
     }
 
-    return duration + `${this.milliseconds}ms`
+    return ms > 0
+      ? duration + ((ms + `e${precision}`) / (10 ** precision)) + 'ms'
+      : duration.trimEnd()
   }
 })
