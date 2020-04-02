@@ -16,6 +16,6 @@ test('timer', (t, done) => {
 
 test('duration', t => {
   const timer = createTimer()
-  timer.milliseconds = 3600 * 1000 + 120 * 1000 + 30 * 1000 + 420
-  t.expect(timer.duration()).toBe('1h 2m 30s 420ms')
+  timer.milliseconds = 3600 * 1000 + 120 * 1000 + 30 * 1000 + 420.5464
+  t.expect(timer.duration()).toBe('1h 2m 30s 420.546ms')
 })

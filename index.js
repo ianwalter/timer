@@ -23,7 +23,7 @@ module.exports = () => ({
     }
 
     return ms > 0
-      ? duration + ((ms + `e${precision}`) / (10 ** precision)) + 'ms'
+      ? duration + Math.round(ms * 10 ** precision) / (10 ** precision) + 'ms'
       : duration.trimEnd()
   }
 })
