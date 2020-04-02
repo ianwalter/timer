@@ -20,7 +20,7 @@ const milliseconds = timer.stop()
 const duration = timer.duration()
 // timer.time => [2, 506289527]
 // milliseconds => 2506.29
-// duration => 2s, 506.29ms
+// duration => 2s 506.29ms
 ```
 
 ## License
